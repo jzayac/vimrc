@@ -113,5 +113,5 @@ let g:lasttab = 1
 nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
-set tabstop=2
+set tabstop=4
 
