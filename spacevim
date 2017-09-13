@@ -1,0 +1,175 @@
+" You can enable the existing layers in space-vim and
+" exclude the partial plugins in a certain layer.
+" The command Layer is vaild in the function Layers().
+" Use exclude option if you don't want the full Layer,
+" e.g., Layer 'better-defaults', { 'exclude': 'itchyny/vim-cursorword' }
+function! Layers()
+
+  " Default layers, recommended!
+  Layer 'fzf'
+  Layer 'unite'
+  Layer 'better-defaults'
+
+endfunction
+
+" Put your private plugins here.
+function! UserInit()
+
+  Plug 'scrooloose/nerdtree'
+  Plug 'kien/ctrlp.vim'
+  Plug 'easymotion/vim-easymotion'
+  Plug 'tpope/vim-commentary'
+  Plug 'terryma/vim-multiple-cursors'
+  Plug 'tpope/vim-surround'
+  Plug 'editorconfig/editorconfig-vim'
+  Plug 'rking/ag.vim'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-fugitive'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'vim-scripts/ReplaceWithRegister'
+
+  " golang
+  Plug 'fatih/vim-go'
+
+  " Space has been set as the default leader key,
+  " if you want to change it, uncomment and set it here.
+  " let g:spacevim_leader = "<\Space>"
+  " let g:spacevim_localleader = ','
+
+  " Install private plugins
+  " Plug 'extr0py/oni'
+
+  " setup leader to ,"
+  let g:spacevim_leader = ","
+  " let g:spacevim_localleader = ','
+
+	" gitgutter"
+	let g:gitgutter_sign_added = '+'
+	let g:gitgutter_sign_modified = '~'
+	let g:gitgutter_sign_removed = '>'
+	let g:gitgutter_sign_removed_first_line = '^'
+	let g:gitgutter_sign_modified_removed = 'w'
+
+	let g:lasttab = 1
+
+	let NERDTreeShowHidden=1
+
+endfunction
+
+" Put your costom configurations here, e.g., change the colorscheme.
+function! UserConfig()
+
+	" Set to auto read when a file is changed from the outside
+	set autoread
+
+
+	" Ignore case when searching
+	set ignorecase
+
+	" When searching try to be smart about cases
+	set smartcase
+
+	" Highlight search results
+	set hlsearch
+
+	" Makes search act like search in modern browsers
+	set incsearch
+
+
+	" For regular expressions turn magic on
+	set magic
+
+
+	" Show matching brackets when text indicator is over them
+	set showmatch
+	" How many tenths of a second to blink when matching brackets
+	set mat=2
+
+
+	" No annoying sound on errors
+	set noerrorbells
+	set novisualbell
+	set t_vb=
+	set tm=500
+	set number
+
+	" Add a bit extra margin to the left
+	"set foldcolumn=1"
+
+	" Use spaces instead of tabs
+	set expandtab
+
+	" Be smart when using tabs ;)
+	set smarttab
+
+
+	"  KOKOTINA   "
+	set clipboard=unnamedplus
+
+	" Useful mappings for managing tabs
+	map <leader>tn :tabnew<cr>
+	map <leader>to :tabonly<cr>
+	map <leader>tc :tabclose<cr>
+	map <leader>tm :tabmove<cr>
+	map <leader>tt :tabnext<cr>
+
+	" Let 'tl' toggle between this and the last accessed tab
+	" let g:lasttab = 1
+	nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
+	" nmap map <C-N> :NERDTreeToggle<CR>
+	nmap <leader>m :NERDTreeToggle<CR>
+	au TabLeave * let g:lasttab = tabpagenr()
+
+	" TEST copy "
+	set pastetoggle=<F2>
+
+
+	set tabstop=2
+	set shiftwidth=2
+	set wildignore+=*/.git/*,*/node_modules/*,*/node_modules_local/*,*/.svn/*,*/.idea/*,*/.DS_Store,*/vendor
+
+
+	" let NERDTreeShowHidden=1
+
+
+	" let g:lightline = {
+	"  'colorscheme': 'wombat',
+	" }
+
+	" syntastics recommended settings"
+	" set statusline+=%#warningmsg#
+	" set statusline+=%{SyntasticStatuslineFlag()}
+	" set statusline+=%*
+
+	" let g:syntastic_always_populate_loc_list = 1
+	" let g:syntastic_auto_loc_list = 1
+	" let g:syntastic_check_on_open = 1
+	" let g:syntastic_check_on_wq = 0
+
+	" let g:syntastic_javascript_checkers = ['eslint']
+
+
+
+	" Color name (:help cterm-colors) or ANSI code
+
+	" let gclimelight_conceal_ctermfg = 'gray'
+	" let gclimelight_conceal_ctermfg = 240
+
+	" <Leader>f{char} to move to {char}
+	map  <Leader>f <Plug>(easymotion-bd-f)
+	nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+	" s{char}{char} to move to {char}{char}
+	nmap <Leader>s <Plug>(easymotion-overwin-f2)
+
+	" Move to line
+	map <Leader>j <Plug>(easymotion-bd-jk)
+	nmap <Leader>j <Plug>(easymotion-overwin-line)
+
+	" Move to word
+	map  <Leader>w <Plug>(easymotion-bd-w)
+	nmap <Leader>w <Plug>(easymotion-overwin-w)
+	map  <space>jw <Plug>(easymotion-bd-w)
+
+endfunction
