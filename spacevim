@@ -18,7 +18,7 @@ function! UserInit()
   Plug 'scrooloose/nerdtree'
   Plug 'kien/ctrlp.vim'
   Plug 'easymotion/vim-easymotion'
-  Plug 'tpope/vim-commentary'
+  
   Plug 'terryma/vim-multiple-cursors'
   Plug 'tpope/vim-surround'
   Plug 'editorconfig/editorconfig-vim'
